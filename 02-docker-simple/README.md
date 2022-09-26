@@ -15,13 +15,13 @@ docker build -t counter-faulty .
 ## Counter - Infinite
 ```
 cd counter-infinite
-docker build -t counter-infinit .
+docker build -t counter-infinite .
 ```
 
 ## Counter - Short
 ```
-cd counter-faulty
-docker build -t counter-inifite .
+cd counter-short
+docker build -t counter-short .
 ```
 
 # Tasks to excercise
