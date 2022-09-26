@@ -12,7 +12,9 @@ Choose a single docker node to host the local registry.
 
 Run the following
 
+```
 ./setup-registry.sh
+```
 
 ### Part 2: Static hosts reference
 
