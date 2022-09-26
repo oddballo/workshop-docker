@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+    web:
+        image: nginx:1.23.1
+        volumes:
+          - ./www:/var/www:ro
+          - ./conf.d:/etc/nginx/conf.d:ro
+          - ./log/nginx:/var/log/nginx:rw
+        ports:
+          - 8080:80
+        networks:
+          backend:
+          frontend:
+            aliases:
+              - web
+        restart: on-failure:5
+        deploy:
+          resources:
+            limits:
+              cpus: '0.25'
+              memory: 128M
+            reservations:
+              cpus: '0.1'
+              memory: 32M
+
+    php:
+        image: php:8.0-fpm
+        volumes:
+          - ./www:/var/www:ro
+          - ./log/php:/var/log:rw
+        networks:
+          - backend
+        restart: on-failure:5
+        deploy:
+          resources:
+            limits:
+              cpus: '0.25'
+              memory: 128M
+            reservations:
+              cpus: '0.1'
+              memory: 32M
+
+networks:
+    frontend:
+        name: "frontend"
+    backend:
+        name: "backend"
+
